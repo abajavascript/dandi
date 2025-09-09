@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Notification from "../../components/Notification";
-import { validateApiKey } from "../../../lib/api-keys";
 
 export default function ProtectedPage() {
   const [notification, setNotification] = useState({
@@ -30,8 +29,16 @@ export default function ProtectedPage() {
       // sessionStorage.removeItem("apiKeyToValidate");
 
       try {
-        // Validate API key against Supabase table
-        const result = await validateApiKey(apiKey);
+        // Validate API key using internal API endpoint
+        const response = await fetch("/api/validate-api-key", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ apiKey }),
+        });
+
+        const result = await response.json();
 
         setIsValidKey(result.isValid);
         setIsValidating(false);
