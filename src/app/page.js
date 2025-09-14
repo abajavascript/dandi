@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import LoginButton from "../components/LoginButton";
+import SessionDebug from "../components/SessionDebug";
 
 export default function Home() {
   return (
@@ -26,6 +28,16 @@ export default function Home() {
           </li>
         </ol>
 
+        {/* Google SSO Login Section */}
+        <div className="w-full max-w-md mx-auto p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 mb-8">
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 text-center">
+            Authentication
+          </h2>
+          <div className="flex justify-center">
+            <LoginButton />
+          </div>
+        </div>
+
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           <Link
             className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white gap-2 font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
@@ -46,6 +58,25 @@ export default function Home() {
               />
             </svg>
             API Dashboard
+          </Link>
+          <Link
+            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-green-600 hover:bg-green-700 text-white gap-2 font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
+            href="/auth-protected"
+          >
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+              />
+            </svg>
+            🔒 Google SSO Demo
           </Link>
           <a
             className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
@@ -119,6 +150,7 @@ export default function Home() {
           Go to nextjs.org →
         </a>
       </footer>
+      <SessionDebug />
     </div>
   );
 }
