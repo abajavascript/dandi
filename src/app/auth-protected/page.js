@@ -87,8 +87,8 @@ export default function AuthProtected() {
           </h2>
           <p className="text-gray-600 dark:text-gray-400 mb-4">
             This page is only accessible to users authenticated with Google SSO.
-            You're seeing this because you've successfully signed in with your
-            Google account.
+            You are seeing this because you have successfully signed in with
+            your Google account.
           </p>
 
           <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mb-4">
